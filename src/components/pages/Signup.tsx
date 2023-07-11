@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserAuth } from '../../context/AuthContext';
 const Signup = () => {
@@ -8,7 +8,7 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate()
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
       await signUp(email, password);
