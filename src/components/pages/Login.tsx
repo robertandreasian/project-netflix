@@ -1,7 +1,8 @@
 import React from 'react'
+import { useState, FormEvent } from 'react'
+
 import { Link, useNavigate} from 'react-router-dom'
 import { UserAuth } from '../../context/AuthContext'
-import { useState } from 'react'
 
 const Login = () => {
   const [error, setError] = useState('')
@@ -10,7 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate()
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError('')
     try {

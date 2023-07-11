@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+
 import Movie from './Movie';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
+     interface IRowProps {
+        title: string;
+        fetchURL: string;
+        rowID: string;
+     }
 
 
-
-const Row = ({title, fetchURL, rowID}) => {
+const Row = ({title, fetchURL, rowID}: IRowProps) => {
     const [movies, setMovies] = useState([]);
     useEffect(() => {
         axios.get(fetchURL).then((response) => {
@@ -17,11 +22,18 @@ const Row = ({title, fetchURL, rowID}) => {
     const slideLeft = () => {
         var slider = document.getElementById('slider' + rowID);
         console.log(slider);
+        if(slider) {
         slider.scrollLeft = slider.scrollLeft - 500;
+            
+        }
+
       };
       const slideRight = () => {
         var slider = document.getElementById('slider' + rowID);
+        if(slider) {
         slider.scrollLeft = slider.scrollLeft + 500;
+
+        }
       };
 
   return (

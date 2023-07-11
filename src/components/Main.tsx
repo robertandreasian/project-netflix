@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+
 import requests from '../Requests';
 import {FaHeart} from 'react-icons/fa'
+import { IMovie } from '../types';
 
 const Main = () => {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<IMovie[]>([]);
   const movie = movies[Math.floor(Math.random() * movies.length)];
   useEffect(() => {
     axios.get(requests.requestPopular).then((response) => {
       setMovies(response.data.results);
     });
   }, []);
-  // console.log(movie)
-    const truncateString = (str, num) => {
+  console.log('movie', movie)
+    const truncateString = (str:string, num:number) => {
     if (str?.length > num) {
       return str.slice(0, num) + '...';
     } else {

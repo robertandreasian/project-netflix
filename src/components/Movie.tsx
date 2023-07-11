@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { UserAuth } from '../context/AuthContext';
 import { db } from '../firebase';
 import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
+import { IMovie } from '../types';
 
-const Movie = ({ item }) => {
+interface IMovieProps {
+  item: IMovie
+}
+
+const Movie = ({ item }: IMovieProps) => {
   const [like, setLike] = useState(false);
   const [saved, setSaved] = useState(false);
   const { user } = UserAuth();
